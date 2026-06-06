@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Asosiy sahifa va barcha resurslar indekslansin
-Sitemap: https://koreaproconsulting.netlify.app/sitemap.xml
+Sitemap: https://koreyapro.uz/sitemap.xml
