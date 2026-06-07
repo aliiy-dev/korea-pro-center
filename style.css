@@ -386,6 +386,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .f-col p{display:flex;align-items:center;gap:7px;font-size:.83rem;color:rgba(255,255,255,.45);margin-bottom:9px}
 .f-col p i{color:var(--gold);width:14px;flex-shrink:0}
 .f-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);color:var(--gold);font-size:.75rem;font-weight:700;padding:7px 14px;border-radius:50px;margin-top:10px}
+.footer-seo{background:rgba(0,0,0,.18);padding:14px 0;border-top:1px solid rgba(255,255,255,.05)}
+.footer-seo .container{font-size:.74rem;color:rgba(255,255,255,.38);line-height:1.7;text-align:center}
+.footer-seo strong{color:var(--gold);font-weight:700}
 .footer-bar{background:rgba(0,0,0,.3);padding:18px 0}
 .footer-bar .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .footer-bar span{font-size:.78rem;color:rgba(255,255,255,.3)}
