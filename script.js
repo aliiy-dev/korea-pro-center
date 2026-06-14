@@ -612,27 +612,16 @@ function initContactForm() {
       `💬 Message: ${message || '—'}\n🌐 Lang: ${currentLang.toUpperCase()}`;
 
     try {
-      /* ── EmailJS — leadlar to'g'ridan-to'g'ri email pochtaga tushadi ── */
-      const EMAILJS_SERVICE  = 'service_33zlit2';
-      const EMAILJS_TEMPLATE = 'template_o11ns9e';
-      const EMAILJS_PUBLIC   = 'yZUTRAdY8_l0DH3ch';
+      /* ── Vercel serverless funksiya → Telegram bot (token yashirin) ── */
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, edu, program, message, lang: currentLang }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || 'lead failed');
 
-      const params = {
-        title:   'Korea Pro Website — New Application',
-        name:    name,
-        phone:   phone,
-        Country: 'Uzbekistan',
-        message:
-          `📚 Education: ${edu || '—'}\n` +
-          `🎯 Program: ${program || '—'}\n` +
-          `💬 Message: ${message || '—'}\n` +
-          `🌐 Language: ${currentLang.toUpperCase()}`,
-      };
-
-      if (typeof emailjs === 'undefined') throw new Error('EmailJS not loaded');
-      await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, params, { publicKey: EMAILJS_PUBLIC });
-
-      showMsg('success', '✅ ' + (currentLang === 'uz' ? 'Xabar yuborildi! 2 soat ichida javob beramiz.' : currentLang === 'ru' ? 'Сообщение отправлено! Ответим в течение 2 часов.' : 'Message sent! We will respond within 2 hours.'));
+      showMsg('success', '✅ ' + (currentLang === 'uz' ? 'Xabar yuborildi! 2 soat ichida javob beramiz.' : currentLang === 'ru' ? 'Сообщение отправлено! Ответим в течение 2 часов.' : currentLang === 'ko' ? '메시지가 전송되었습니다! 2시간 이내에 답변드립니다.' : 'Message sent! We will respond within 2 hours.'));
       form.reset();
     } catch {
       const wa = `https://wa.me/998941311317?text=${encodeURIComponent(text)}`;
